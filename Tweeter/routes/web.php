@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'UserController@show');
+Route::post('/profile/post', 'UserController@newTweet');
+Route::post('profile/edit', 'UserController@editTweet');
+Route::post('profile/delete', 'UserController@deleteTweet');
+
+
+Route::get('/feed','FeedController@NewsFeed');
+Route::get('/feed/edit','FeedController@edit');
+Route::get('/feed/delete', 'FeedController@edelete');
+
