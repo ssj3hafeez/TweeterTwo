@@ -21,7 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'UserController@show');
 Route::get('/profile/tweets/{id}', 'UserController@showTweet');
 Route::post('/profile/post', 'UserController@newTweet');
+
 Route::get('/profile/edit/', 'UserController@editTweet');
+Route::post('/profile/update-edit/', 'UserController@updateTweet');
+
 Route::post('/profile/delete', 'UserController@deleteTweet');
 
 

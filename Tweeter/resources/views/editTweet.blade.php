@@ -5,7 +5,7 @@
 
 <h3>{{$tweets->content}}</h3>
 
-<form action="/profile/edit" method="GET">
+<form action= "/profile/update-edit" method="POST">
     @csrf
 <input type= "hidden" name="author" value="{{ Auth::user()->name }}">
 <textarea name="content" value="Tweets here" style="width: 40vw; height: 20vh; display: block; resize: none;"></textarea>

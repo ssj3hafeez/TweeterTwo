@@ -52,7 +52,7 @@ class UserController extends Controller
     }
 
 
-    public function editTweet(Request $request){
+    function editTweet(Request $request){
     $id = $request->edit;
     if(Auth::check()) {
     $tweet = \App\Tweets::find($id);
@@ -61,5 +61,19 @@ class UserController extends Controller
     }
 
 }
+    function updateTweet(Request $request){
+        $id = $request->id;
+        if(Auth::check()) {
+        $tweet = \App\Tweets::find($id);
+        $tweet->content = $request->content;
+        $tweet->save();
+
+        return redirect('/profile');
+
+    }
+
+
+}
+
 
 }
