@@ -13,8 +13,8 @@ class CreateLikeTable extends Migration
      */
     public function up()
     {
-        Schema::create('_like', function (Blueprint $table) {
-            $table->bigIncrements('like_id');
+        Schema::create('like', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ class CreateLikeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_like');
+        Schema::dropIfExists('like');
     }
 }

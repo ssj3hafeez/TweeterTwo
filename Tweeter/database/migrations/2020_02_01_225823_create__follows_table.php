@@ -13,10 +13,10 @@ class CreateFollowsTable extends Migration
      */
     public function up()
     {
-        Schema::create('_follows', function (Blueprint $table) {
-            $table->bigIncrements('follows_id');
+        Schema::create('follows', function (Blueprint $table) {
+          //  $table->bigIncrements('follows_id');//
+            $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->bigInteger('followed_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateFollowsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_follows');
+        Schema::dropIfExists('follows');
     }
 }
