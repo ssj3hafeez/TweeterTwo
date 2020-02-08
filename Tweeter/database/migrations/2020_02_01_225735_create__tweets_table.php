@@ -16,7 +16,7 @@ class CreateTweetsTable extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->bigIncrements('id'); //tweet ID
             $table->string('author', 50);
-            $table->bigInteger('user_id'); //FK //user ID
+            $table->bigInteger('users_id'); //FK //user ID
             $table->text('content');
             $table->timestamps();
         });

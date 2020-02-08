@@ -8,6 +8,9 @@ Use Db;
 
 class UserController extends Controller
 {
+
+    // Tweets
+
     function show(){
         if (Auth::check()) {
             $result = \App\Tweets::all();
@@ -29,7 +32,7 @@ class UserController extends Controller
             $tweet = new \App\Tweets;
             $tweet->author = $request->author;
             $tweet->content = $request->content;
-            $tweet->user_id = $user->id;
+            $tweet->users_id = $user->id;
             $tweet->save();
 
             $result = \App\Tweets::all();
@@ -53,7 +56,7 @@ class UserController extends Controller
 
 
     function editTweet(Request $request){
-    $id = $request->edit;
+    $id = $request->edit; // name of the form from the profile view page
     if(Auth::check()) {
     $tweet = \App\Tweets::find($id);
     return view('/editTweet', ['tweets' => $tweet]);
@@ -62,7 +65,7 @@ class UserController extends Controller
 
 }
     function updateTweet(Request $request){
-        $id = $request->id;
+        $id = $request->id;  //the submit button is called id from editTweet view page
         if(Auth::check()) {
         $tweet = \App\Tweets::find($id);
         $tweet->content = $request->content;
@@ -71,6 +74,26 @@ class UserController extends Controller
         return redirect('/profile');
 
     }
+
+
+}
+
+
+//Comments functions
+
+function postComment(Request $request ){
+    $user = Auth::user();
+    if (Auth::check()) {
+    $tweet = new \App\Tweets;
+    $tweet->author = $request->author;
+    $tweet->comment = $request->comment;
+    $tweet->user_id = $user->id;
+
+    $result = \App\Tweets::all();
+    return view('profile', ['comments' => $result]);
+} else {
+    return view('profile');
+}
 
 
 }

@@ -38,11 +38,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+        //tweets relationship
 
         public function tweets() {
         return $this->hasMany('App\Tweets');
         }
 
+        public function comments(){
+            return $this->hasMany('App\Comments');
+        }
 
 
 

@@ -19,16 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'UserController@show');
-Route::get('/profile/tweets/{id}', 'UserController@showTweet');
 Route::post('/profile/post', 'UserController@newTweet');
 
 Route::get('/profile/edit/', 'UserController@editTweet');
 Route::post('/profile/update-edit/', 'UserController@updateTweet');
-
 Route::post('/profile/delete', 'UserController@deleteTweet');
 
 
-Route::get('/feed','FeedController@NewsFeed');
-Route::get('/feed/edit','FeedController@edit');
-Route::get('/feed/delete', 'FeedController@edelete');
+Route::get('/NewsFeed', 'FeedController@showTweets');
+Route::post('/NewsFeed', 'FeedController@showTweets');
+Route::post('deleteComment', 'FeedController@deleteComment'); //is deleting a comment
+Route::post('/postComment','FeedController@postComment'); //showing edit form
 
+Route::post('NewsFeed/update-Comment','FeedController@updateComment'); //update comment
