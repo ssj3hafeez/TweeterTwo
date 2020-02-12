@@ -58,8 +58,8 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    <a href="/profile/" class="dropdown-item">
-                                        View Profile
+                                    <a href="/tweets/" class="dropdown-item">
+                                        View Tweets
                                     </a>
 
                                     <a href="/NewsFeed/" class="dropdown-item">

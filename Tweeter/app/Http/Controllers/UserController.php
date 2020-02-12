@@ -9,14 +9,14 @@ Use Db;
 class UserController extends Controller
 {
 
-    // Tweets
+         // Tweets
 
     function show(){
         if (Auth::check()) {
             $result = \App\Tweets::all();
-            return view('/profile',['tweets'=>$result]);
+            return view('/tweets',['tweets'=>$result]);
         } else {
-            return view('/profile');
+            return view('/tweets');
         }
 
     }
@@ -36,9 +36,9 @@ class UserController extends Controller
             $tweet->save();
 
             $result = \App\Tweets::all();
-            return view('profile', ['tweets' => $result]);
+            return view('tweets', ['tweets' => $result]);
         } else {
-            return view('profile');
+            return view('tweets');
         }
 
     }
@@ -49,14 +49,14 @@ class UserController extends Controller
     if(Auth::check()) {
     $tweet= \App\Tweets::find($id);
     $tweet->delete();
-    return redirect ('/profile');
+    return redirect ('/tweets');
   }
 
     }
 
 
     function editTweet(Request $request){
-    $id = $request->edit; // name of the form from the profile view page
+    $id = $request->edit; // name of the form from the tweets view page
     if(Auth::check()) {
     $tweet = \App\Tweets::find($id);
     return view('/editTweet', ['tweets' => $tweet]);
@@ -71,7 +71,7 @@ class UserController extends Controller
         $tweet->content = $request->content;
         $tweet->save();
 
-        return redirect('/profile');
+        return redirect('/tweets');
 
     }
 
@@ -90,13 +90,18 @@ function postComment(Request $request ){
     $tweet->user_id = $user->id;
 
     $result = \App\Tweets::all();
-    return view('profile', ['comments' => $result]);
+    return view('tweets', ['comments' => $result]);
 } else {
-    return view('profile');
+    return view('tweets');
 }
 
 
 }
 
 
+
+
 }
+
+
+

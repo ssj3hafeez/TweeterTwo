@@ -16,19 +16,25 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+// home page and login
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'UserController@show');
-Route::post('/profile/post', 'UserController@newTweet');
 
-Route::get('/profile/edit/', 'UserController@editTweet');
-Route::post('/profile/update-edit/', 'UserController@updateTweet');
-Route::post('/profile/delete', 'UserController@deleteTweet');
 
+//edit, delete and create tweets
+Route::get('/tweets', 'UserController@show');
+Route::post('/tweets/post', 'UserController@newTweet');
+Route::get('/tweets/edit/', 'UserController@editTweet');
+Route::post('/tweets/update-edit/', 'UserController@updateTweet');
+Route::post('/tweets/delete', 'UserController@deleteTweet');
+
+// tweet feeds, create/edit/delete comments
 
 Route::get('/NewsFeed', 'FeedController@showTweets');
-Route::post('/NewsFeed', 'FeedController@showTweets');
-Route::post('deleteComment', 'FeedController@deleteComment'); //is deleting a comment
-Route::post('/postComment','FeedController@postComment'); //showing edit form
+// Route::post('/NewsFeed', 'FeedController@showTweets');
+Route::post('/NewsFeed/deleteComment', 'FeedController@deleteComment'); //is deleting a comment
+Route::post('/NewsFeed/Comment','FeedController@postComment'); //showing edit form
 
-Route::post('NewsFeed/update-Comment','FeedController@updateComment'); //update comment
+Route::get('/NewsFeed/update-Comment','FeedController@updateComment'); //update comment
+
+
+Route::get('/follow', 'FollowController@followlist');

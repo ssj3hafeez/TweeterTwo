@@ -17,5 +17,8 @@ public function comments(){
     return $this->hasMany('App\Comments');
 }
 
+public function like(){
+    return $this->hasMany('App\Like');
+}
 
 }

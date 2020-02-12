@@ -1,11 +1,16 @@
+
+
 @extends('layouts.app')
+@section('content')
 
-@section ('content')
+<h1> Edit Tweet </h1>
 
-    <form action="editComment" method="post">
-        @csrf
-        <input type="text" name="comment" value="{{$comment->content}}">
-        <button type="submit" name="comment_id" value="{{$comment->id}}">Edit</button>
-    </form>
+<h3>{{$comments->content}}</h3>
 
+<form action= 'NewsFeed/update-Comment' method="POST">
+    @csrf
+<input type= "hidden" name="author" value="{{ Auth::user()->name }}">
+<textarea name="content" value="{{$comments->content}}" style="width: 40vw; height: 20vh; display: block; resize: none;"></textarea>
+<button name ="comment_id" type= "submit" value="{{$comments->id}}"> Edit Comments </button>
+</form>
 @endsection

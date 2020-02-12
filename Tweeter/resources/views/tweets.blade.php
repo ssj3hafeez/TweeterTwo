@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -15,7 +16,7 @@
                 <br>
 
                 @if ( Auth::user()->name == $tweet->author)
-                <form action="/profile/edit" method="GET">
+                <form action="/tweets/edit" method="GET">
                     @csrf
                     <button type="submit" name="edit" value="{{$tweet->id}}" >Edit Tweet </button>
                 </form>
@@ -23,7 +24,7 @@
             <br>
 
                 @if ( Auth::user()->name == $tweet->author)
-                    <form action="/profile/delete" method="post">
+                    <form action="/tweets/delete" method="post">
                         @csrf
                         <button type="submit" name="delete" value="{{$tweet->id}}" >Delete Tweet</button>
                     </form>
@@ -33,7 +34,7 @@
          <br>
         </div>
         <div style="margin-left: 25vw">
-            <form action="/profile/post" method="post">
+            <form action="/tweets/post" method="post">
                 @csrf
                 <input type="hidden" name="author" value="{{ Auth::user()->name }}">
                 <textarea name="content" value="Content" style="width: 50vw; height: 20vh; display: block; resize: none;"></textarea>
@@ -42,3 +43,4 @@
         </div>
     @endguest
 @endsection
+
