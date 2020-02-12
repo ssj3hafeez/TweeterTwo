@@ -38,3 +38,4 @@ Route::get('/NewsFeed/update-Comment','FeedController@updateComment'); //update 
 
 
 Route::get('/follow', 'FollowController@followlist');
+Route::post('/follow/users/','FollowController@followuser');

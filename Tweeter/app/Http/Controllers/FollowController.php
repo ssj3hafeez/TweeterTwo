@@ -15,4 +15,24 @@ class FollowController extends Controller
         }
 
     }
+
+    function followuser(Request $request){
+        $id = $request->follow_id;
+        if(Auth::check()){
+        $follow = new \App\Follows;
+        $follow->users_id = Auth::user()->id;
+        $follow->followed_id = $id;
+        $follow->save();
+
+        }
+        return redirect('/follow');
+
+    }
+
+
+
+
+
+
 }
+
