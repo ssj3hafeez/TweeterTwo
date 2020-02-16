@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header-title" style="">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,9 +14,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
-                </div>
-            </div>
+                   You are logged in!
+<br>
+<br>
+</div>
+</div>
+                    <form action="/tweetFeed"  method="get">
+                        <button type="submit" class="button is-danger is-large is-outlined is-fullwidth"> Enter Tweeter Feed </button>
+                        </form>
+
+
         </div>
     </div>
 </div>

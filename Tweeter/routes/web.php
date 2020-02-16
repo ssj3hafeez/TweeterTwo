@@ -19,23 +19,32 @@ Auth::routes();
 // home page and login
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-//edit, delete and create tweets
-Route::get('/tweets', 'UserController@show');
-Route::post('/tweets/post', 'UserController@newTweet');
-Route::get('/tweets/edit/', 'UserController@editTweet');
-Route::post('/tweets/update-edit/', 'UserController@updateTweet');
-Route::post('/tweets/delete', 'UserController@deleteTweet');
-
-// tweet feeds, create/edit/delete comments
-
-Route::get('/NewsFeed', 'FeedController@showTweets');
-// Route::post('/NewsFeed', 'FeedController@showTweets');
-Route::post('/NewsFeed/deleteComment', 'FeedController@deleteComment'); //is deleting a comment
-Route::post('/NewsFeed/Comment','FeedController@postComment'); //showing edit form
-
-Route::get('/NewsFeed/update-Comment','FeedController@updateComment'); //update comment
+Route::get('/', 'HomeController@index');
 
 
-Route::get('/follow', 'FollowController@followlist');
-Route::post('/follow/users/','FollowController@followuser');
+// profile
+Route::post('/profile/followUser', 'UserController@followUser');
+Route::post('/profile/unfollowUser', 'UserController@unfollowUser');
+Route::get('/profile/show/{id}', 'UserController@showProfile');
+Route::post('/profile/editEmail', 'UserController@editEmail');
+Route::post('/profile/editPassword', 'UserController@editPassword');
+
+
+// Tweet Feed
+Route::get('/tweetFeed', 'FeedController@showAll');
+Route::get('/tweet/addTweet', 'FeedController@newTweet');
+Route::get('/tweet/showTweet', 'FeedController@showTweet');
+Route::post('/tweet/editTweet', 'FeedController@editTweet');
+Route::post('/tweet/deleteTweet', 'FeedController@showDeleteQuestion');
+Route::get('/tweet/deleteTweet/yes', 'FeedController@deleteTweet');
+
+//Comments
+Route::post('/comment/addComment', 'FeedController@newComment');
+Route::post('/comment/deleteComment', 'FeedController@deleteComment');
+Route::post('/comment/showComment', 'FeedController@showComment');
+Route::post('/comment/editComment', 'FeedController@editComment');
+
+//Like endpoints
+Route::post('like/likeTweet', 'FeedController@likeTweet');
+Route::post('like/unlikeTweet', 'FeedController@unlikeTweet');
+

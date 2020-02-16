@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    protected $table = 'users';
+
     use Notifiable;
 
     /**
@@ -48,6 +48,15 @@ class User extends Authenticatable
             return $this->hasMany('App\Comments');
         }
 
+
+        public function like(){
+            return $this->hasMany('App\Like');
+        }
+
+
+        public function follows(){
+            return $this->hasMany('App\Follows');
+        }
 
 
 }

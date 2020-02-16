@@ -9,10 +9,10 @@ class Like extends Model
     protected $table = 'like';
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function tweets(){
-        return $this->belongsTo('App\tweet');
+        return $this->belongsTo('App\Tweets');
     }
 }
