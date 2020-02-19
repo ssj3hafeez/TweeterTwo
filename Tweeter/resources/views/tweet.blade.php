@@ -10,6 +10,7 @@
         <div><textarea class="input is-focused" id='content' rows="5" name='content'>{{$tweets->content}}</textarea></div>
 </form>
     <br>
+    {{-- bulma tags  --}}
     <div class="field is-grouped">
     <p class="control">
         <button class="button is-danger is-outlined is-small" name='id' value='{{$tweets->id}}' type='submit'>Modifiy Tweet</button>

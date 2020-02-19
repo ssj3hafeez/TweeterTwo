@@ -13,18 +13,19 @@
 
 @endphp
 
-
+{{-- Follow function and form added --}}
 @section('content')
 
 @foreach ($users as $user)
 <p><strong>{{ $user->name }}</strong></p>
 @if(checkFollowing ($user->id, Auth::user()->follows))
-<p>Already Following!</p>
+
 @csrf
 <form action="/follow/" method="get">
     @csrf
     <button type="submit" name="unfollow_id" value="{{$user->id}}" >Unfollow</button> <br>
 </form>
+{{-- Toggle button added if clicked --}}
 
 @else
 <form action="/follow/users/" method="post">

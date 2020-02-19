@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+{{-- Added Bulma tags --}}
 <div class=" has-text-danger">
     Are you sure you want to delete the following tweet?
 </div>
