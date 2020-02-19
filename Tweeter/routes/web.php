@@ -38,6 +38,11 @@ Route::post('/tweet/editTweet', 'FeedController@editTweet');
 Route::post('/tweet/deleteTweet', 'FeedController@showDeleteQuestion');
 Route::get('/tweet/deleteTweet/yes', 'FeedController@deleteTweet');
 
+//delete
+
+Route::post('/profile/deleteUser', 'UserController@ConfirmDelete');
+Route::post('/profile/delete/confirm', 'UserController@deleteProfile');
+
 //Comments
 Route::post('/comment/addComment', 'FeedController@newComment');
 Route::post('/comment/deleteComment', 'FeedController@deleteComment');

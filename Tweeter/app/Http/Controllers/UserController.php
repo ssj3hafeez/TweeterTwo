@@ -80,8 +80,31 @@ class UserController extends Controller
     }
 
 
+    function ConfirmDelete(Request $request){
+        if (Auth::user()->id == \App\User::find($request->id)->id){
+            return view('deleteuser');
+        } else {
+            return view ('error');
+        }
+    }
+
+    function deleteProfile(Request $request){
+        if (Auth::user()->id == \App\User::find($request->id)->id){
+            $id = $request->id;
+            \App\Like::where('user_id', $id)->delete();
+            \App\Follows::where('user_id', $id)->delete();
+            \App\Comments::where('user_id', $id)->delete();
+            \App\Tweets::where('user_id', $id)->delete();
+            \App\User::destroy($id);
+            return redirect('/');
+        } else {
+            return view('error');
+        }
+
+
 }
 
+}
 
 
 

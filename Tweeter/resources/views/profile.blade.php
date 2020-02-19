@@ -61,29 +61,36 @@
                     </div>
                     @error('password') {{$message}} @enderror
                     <button class="button is-danger is-small" type='submit'>Update Password</button>
+                </form> <br>
+                <form action='/profile/deleteUser' method='POST'>
+                    @csrf
+                    <input type='hidden' name='id' value='{{$user->id}}'>
+                    <button class= "button is-danger is-outlined is-small" type='submit'>Delete Profile</button>
                 </form>
             @endif
+        </div>
+
         </div>
     </div>
 
     @if ($follows->isEmpty())
         <a class="button is-danger is-small" role="button" href="/tweetFeed">Follow users</a>
     @else
-        <ul class="list-item">
+        <ul class="list-item - message is-primary">
             <li class="list-item is-active has-background-danger"><h5>You are following</h5></li>
             @foreach ($follows as $follow)
-                    <li class="list-item">{{$follow->followed_id}}</li>
+                    <li class="list-item - message is-primary has-text-primary - has-text-weight-bold">{{$follow->followed_id}}</li>
             @endforeach
         </ul>
     @endif
-    <hr>
+
     @if ($tweets->isEmpty())
         <a class="button is-danger is-small" role="button" href="/tweetFeed">Go tweet yourself!</a>
     @else
-        <ul class="list-item">
-            <li class="list-item is-active has-background-danger"><h5>Tweek your tweets</h5></li>
+        <ul class="list-item - message is-primary">
+            <li class="list-item is-active has-background-danger  "><h4>Tweek your tweets</h4></li>
             @foreach ($tweets as $tweet)
-                <li class="list-item">{{$tweet->content}}</li>
+                <li class="list-item - message is-primary has-text-primary - has-text-weight-bold ">{{$tweet->content}}</li>
             @endforeach
         </ul>
     @endif
