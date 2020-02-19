@@ -2,9 +2,9 @@
 @extends('layouts.app')
 @section('content')
 
-<h4>Tweek Your Comment</h4>
-<h3 class=" has-text-danger">{{$comment->content}}</h3>
-<div class ="box">
+<div class="has-text-danger">Tweek Your Comment</div>
+<h3 class=" has-text-danger has-text-weight-bold">{{$comment->content}}</h3>
+<div class ="box message is-primary">
     <form action='/comment/editComment' method='POST'>
         @csrf
         <input type='hidden' name='author' value='{{Auth::user()->id}}'>

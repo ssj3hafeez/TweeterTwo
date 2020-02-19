@@ -22,8 +22,8 @@
 @section('content')
 
     @guest
-    <div class= "column" style="text-align: center;">
-        Log in to tweet, edit, and follow
+    <div class= "column - has-text-danger "style="text-align: center;">
+        Please login! Tweak your Tweet
     </div>
     <hr>
     <div class="column is-mobile is-centered">
@@ -49,7 +49,7 @@
         </div></b>
         <hr>
 
-        <h5>New Tweet</h5>
+        <div class="- has-text-danger has-text-weight-bold">New Tweet</div>
         <br>
         <form action="/tweet/addTweet" method="GET">
             @csrf
@@ -69,10 +69,14 @@
         <hr>
 
         <div class="card" style="margin: 2px">
-            <div class="column">
+            <div class="column message is-primary">
                 @foreach ($tweets as $tweet)
                     <div class="card-container">
                         <div class="card-container">
+
+                                  <figure name="image" class="image is-64x64">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+                                  </figure>
 
                             {{-- tweet and author--}}
                             <h5><a href="/profile/show/{{{$tweet->user_id}}}" class="- has-text-danger - has-text-weight-bold">{{App\Tweets::find($tweet->id)->user->name}}</a></h5>
@@ -85,13 +89,13 @@
                                   <button class= "button is-small is-danger is-outlined"  type="submit" name='id' value='{{$tweet->id}}'> Modify Tweet</button>
                               </form>
                           @endif
-                            {{--Follow/unfollow--}}
+                            {{--Follow/unfollow--}} <br>
                             @if (Auth::user()->id !== $tweet->user_id)
-                                @if (checkUser(App\Tweets::find($tweet->id)->user->name, $follow)){{--check the current followed users compared to current users r--}}
+                                @if (checkUser(App\Tweets::find($tweet->id)->user->name, $follow))
                                     <form action="/profile/unfollowUser" method="POST"style="display:inline">
                                         @csrf
                                         <button class="button is-small is-danger is-outlined"   name='name' value='{{App\Tweets::find($tweet->id)->user->name}}'>Unfollow User</button>
-                                    </form> <br>
+                                    </form>
                                 @else
                                     <form action="/profile/followUser" method="POST"style="display:inline">
                                         @csrf
@@ -101,23 +105,26 @@
                             @endif
                             {{--Like function--}}
                             @if (checkTweet($tweet->id, $likes))
-                                <form action="like/likeTweet" method="POST" style="display:inline"> <br>
+                                <form action="like/likeTweet" method="POST" style="display:inline">
                                     @csrf
-                                    <button class="button is-small is-danger" name='id' value='{{$tweet->id}}'>Like</button><br>
+                                    <button class="button is-small is-danger" name='id' value='{{$tweet->id}}'>Like</button>
                                 </form>
+
                             @else
                                 <form action="like/unlikeTweet" method="POST" style="display:inline">
                                     @csrf
                                     <button class="button is-small is-danger is-outlined"  name='id' value='{{$tweet->id}}'>Unlike</button>
-                                </form>
+                                </form> <br>
+                                <hr>
                             @endif
-                            {{--Show only the comments that belongs to the tweet--}}
+                            {{--Show comments from tweet--}}
                             @foreach ($comments as $comment)
                                 @if ($comment->tweets_id == $tweet->id)
                                     <div class="card-content">
                                         <p class="has-text-weight-semibold - has-text-danger">{{\App\Comments::find($comment->id)->user->name}}</p>
                                         <p class="has-text-weight-medium - has-text-primary">- {{$comment->content}}</p>
                                     {{--Edit comment it belongs to the logged in user--}}
+
                                         @if ($comment->user_id == Auth::user()->id)
                                             <form action="/comment/deleteComment" method="POST" style="display:inline">
                                                 @csrf
@@ -127,7 +134,9 @@
                                                 @csrf
                                                 <button class="button is-small is-danger is-outlined"  name='id' value='{{$comment->id}}'>Edit Comment</button>
                                             </form>
+
                                         @endif
+
                                     </div>
                                 @endif
                             @endforeach
@@ -136,10 +145,11 @@
                                     @csrf
                                     <input type='hidden' name='user' value='{{Auth::user()->name}}'>
                                     <div class> <br>
-                                        <textarea class="textarea is-focused is-small" rows="1" id='content' name='content'></textarea>
+                                        <textarea class="textarea is-focused is-small" placeholder="Comment here "rows="1" id='content' name='content'></textarea>
                                     </div><br>
                                     <button class="button is-danger is-small"  name='id' value='{{$tweet->id}}'>Comment</button>
                                 </form>
+                                <hr>
                         </div>
                     </div>
                 @endforeach

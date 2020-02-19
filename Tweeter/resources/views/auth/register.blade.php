@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="box">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header-title is-centered">{{ __('Register') }}</div>
+            <div class="card message is-primary">
+                <div class="card-header-title is-centered message is-primary - has-text-danger subtitle is-3 ">{{ __('Register Account') }}</div>
 
-                <div class="box">
+                <div class="box message is-primary">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="field">
                             <label for="name" class="title is-7">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="input is-focused"  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <div class="field">
+                                <input id="name" type="text" class="input is-focused"  @error('name') is-invalid @enderror name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -29,7 +29,7 @@
                             <label for="email" class="title is-7">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="input is-focused"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" class="input is-focused"  @error('email') is-invalid @enderror name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="password" class="title is-7">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="input is-focused"  @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="input is-focused"  @error('password') is-invalid @enderror name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

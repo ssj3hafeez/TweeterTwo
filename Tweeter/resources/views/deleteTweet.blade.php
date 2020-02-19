@@ -4,7 +4,7 @@
 <div class=" has-text-danger">
     Are you sure you want to delete the following tweet?
 </div>
-<div class="box">
+<div class="box message is-primary">
     <div class="card-header-title has-text-danger">
         {{App\Tweets::find($tweet->id)->user->name}}
     </div>

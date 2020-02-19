@@ -9,8 +9,8 @@ use Db;
 class FeedController extends Controller
 { function showAll(){
     if (Auth::check()){
-    $tweets = \App\Tweets::all()->sortBy('created_at')->reverse();
     $follows = \App\Follows::where('user_id', Auth::user()->id)->get();
+    $tweets = \App\Tweets::all()->sortBy('created_at')->reverse();
     $comments = \App\Comments::all();
     $likes = \App\Like::where('user_id', Auth::user()->id)->get();
     return view('tweetFeed', ['tweets' => $tweets, 'follow' => $follows, 'comments' => $comments, 'likes' => $likes]);
@@ -21,8 +21,8 @@ class FeedController extends Controller
 }
 function newTweet(Request $request){
     if (Auth::check()){
-    $data = $request->validate([
-        'content' => 'required|min:5|max:500'
+   $request->validate([
+        'content' => 'required|min:3|max:500'
     ]);
     $tweet = new \App\Tweets;
     $tweet->user_id = Auth::user()->id;
@@ -50,8 +50,8 @@ function showTweet(Request $request){
 function editTweet(Request $request){
         if (Auth::check()){
             if(Auth::user()->id == \App\Tweets::find($request->id)->user_id){
-            $data = $request->validate([
-                'content' => 'required|min:5|max:500'
+            $request->validate([
+                'content' => 'required|min:3|max:500'
             ]);
             $id =$request->id;
             $tweet = \App\Tweets::find($id);

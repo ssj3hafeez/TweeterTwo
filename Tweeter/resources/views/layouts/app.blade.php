@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Tweeter') }}</title>
+    <title> Tweeter</title>
 
     <!-- Scripts -->
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -21,8 +21,9 @@
 
 </head>
 <body>
+<div class= "has-background-primary">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar - message is-primary">
             <div class="column">
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,29 +33,28 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <nav ul class="navbar is-primary has-text-centered">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="dropdown-trigger" style="padding-left: 5px;" >
+                           <ul> <li><div class="navbar-dropdown has-text-danger" style="padding-left: 5px;" >
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+
                             @if (Route::has('register'))
-                                <li class="dropdown is-left" style="padding-left: 5px;">
+                               <li> <div class="navbar-dropdown has-text-danger" style="padding-left: 5px;">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                </div>
+                            </li>
+                            </ul>
+
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                              <b><a id="navbarDropdown" style="padding-left: 5px;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a></b>
-
-
 
                                 <div class="dropdown is-active" aria-controls="dropdown-menu ">
-                                    <a class="dropdown-item" href="/profile/show/{{{Auth::user()->id}}}">Profile</a>
+                                    <a class="dropdown-item - has-text-danger - has-text-weight-bold" href="/profile/show/{{{Auth::user()->id}}}">Profile</a>
+                                    <a class="dropdown-item - has-text-danger - has-text-weight-bold" href="/tweetFeed/">News Feed </a>
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item - has-text-danger - has-text-weight-bold" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -67,6 +67,7 @@
                                     </form>
                                 </div>
                             </li>
+                        </nav>
                         @endguest
                     </ul>
                 </div>
@@ -77,5 +78,6 @@
             @yield('content')
         </main>
     </div>
+</div>
 </body>
 </html>

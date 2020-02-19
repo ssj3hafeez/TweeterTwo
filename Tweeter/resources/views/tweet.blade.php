@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<h3 class="has-text-danger">Tweek your Tweet </h3>
-<div class ="box">
+<div class="has-text-danger has-text-weight-bold">Tweek your Tweet </div>
+<div class ="box message is-primary">
 <form action='/tweet/editTweet' method='POST'>
     @csrf
     <input type='hidden' name='author' value='{{Auth::user()->id}}'>

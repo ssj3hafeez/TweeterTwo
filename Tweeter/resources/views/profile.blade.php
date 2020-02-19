@@ -7,7 +7,7 @@
 
 
 @guest
-    <h3 class="column" style="text-align: center;">{{$user->name}}'s profile</h3>
+    <div class="column has-text-weight-semibold" style="text-align: center;">{{$user->name}}'s profile</div>
     <hr>
     @if ($tweets->isEmpty())
         <h5 class="column">No Tweets here</h5>
@@ -20,10 +20,10 @@
         </ul>
 @endif
 @else
-    <div class="column - has-text-danger" style="text-align: center;">Your profile {{$user->name}}</div>
+    <div class="column - has-text-danger has-text-weight-semibold" style="text-align: center;">Your profile {{$user->name}}</div>
     <br>
-    <div class="card">
-        <div class="card"><br>
+    <div class="card message is-primary ">
+        <div class="card message is-primary"><br>
             <div class="has-text-weight-semibold has-text-primary"> Username: <strong>{{$user->name}}</strong></div>
             <div class="has-text-weight-semibold has-text-primary"> Email: <strong> {{$user->email}}</strong></div> <br>
         </div>
@@ -78,10 +78,10 @@
     @endif
     <hr>
     @if ($tweets->isEmpty())
-        <a class="button is-danger is-small" role="button" href="/tweetFeed">Go make some new tweets!</a>
+        <a class="button is-danger is-small" role="button" href="/tweetFeed">Go tweet yourself!</a>
     @else
         <ul class="list-item">
-            <li class="list-item is-active has-background-danger"><h5>Your tweets</h5></li>
+            <li class="list-item is-active has-background-danger"><h5>Tweek your tweets</h5></li>
             @foreach ($tweets as $tweet)
                 <li class="list-item">{{$tweet->content}}</li>
             @endforeach
