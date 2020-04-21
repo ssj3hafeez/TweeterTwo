@@ -95,5 +95,9 @@
         </ul>
     @endif
 @endguest
+<div>
+{{ $tweets->links() }}
+
+</div> 
 
 @endsection

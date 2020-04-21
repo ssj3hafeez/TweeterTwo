@@ -100,9 +100,9 @@ class UserController extends Controller
         } else {
             return view('error');
         }
-
-
 }
+
+
 
 }
 

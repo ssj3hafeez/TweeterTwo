@@ -11,6 +11,7 @@ class FeedController extends Controller
     if (Auth::check()){
     $follows = \App\Follows::where('user_id', Auth::user()->id)->get();
     $tweets = \App\Tweets::all()->sortBy('created_at')->reverse();
+
     $comments = \App\Comments::all();
     $likes = \App\Like::where('user_id', Auth::user()->id)->get();
     return view('tweetFeed', ['tweets' => $tweets, 'follow' => $follows, 'comments' => $comments, 'likes' => $likes]);
@@ -38,7 +39,7 @@ function showTweet(Request $request){
     if (Auth::check()){
         if(Auth::user()->id == \App\Tweets::find($request->id)->user_id){
         $id = $request->id;
-        $tweet = \App\Tweets::find($id);
+        $tweet = \App\Tweets::find($id)->paginate(10);
         return view('tweet', ['tweets' => $tweet]);
         } else {
             return view('error');

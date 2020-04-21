@@ -17,8 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
-
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class= "has-background-primary">
@@ -74,10 +75,18 @@
             </div>
         </nav>
 
-        <main class="column">
-            @yield('content')
-        </main>
+    
     </div>
 </div>
+</div> 
+
+</div> 
+
+
+{{--- Root ---}}
+<main>
+    @yield('content')
+</main>
+<script src="{{ asset('js/app.js') }}" ></script>
 </body>
 </html>

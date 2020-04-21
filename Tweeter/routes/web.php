@@ -19,7 +19,7 @@ Auth::routes();
 // home page and login
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 
 // profile
@@ -52,4 +52,8 @@ Route::post('/comment/editComment', 'FeedController@editComment');
 //Like endpoints
 Route::post('like/likeTweet', 'FeedController@likeTweet');
 Route::post('like/unlikeTweet', 'FeedController@unlikeTweet');
+Route::get('like/my-likes', 'FeedController@getMyLikes');
 
+//API 
+Route::get('/checkUserLogin', 'userController@isUserLoggedinAPI'); 
+Route::post('/APICheckUserId','userController@isUser');
